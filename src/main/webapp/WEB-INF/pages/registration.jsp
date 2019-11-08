@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -7,16 +9,16 @@
   </head>
 
   <body>
-    <form:form action="addEmployee" method="post" modelAttribute="Employee">
+    <form:form action="registration" method="post" modelAttribute="employeeForm">
       <p title="Registration form">Registration</p>
       <div class="group">
         <label for="">Login*</label>
-        <input type="text">
+        <form:input path="login" />
       </div>
 
       <div class="group">
         <label for="">Password*</label>
-        <input type="password">
+        <form:input path="password" />
       </div>
 
       <div class="group">
@@ -26,23 +28,23 @@
 
       <div class="group">
         <label for="">Name*</label>
-        <input type="text">
+        <form:input path="name" />
       </div>
 
       <div class="group">
         <label for="">Patronymic</label>
-        <input type="text">
+        <form:input path="patronymic" />
       </div>
 
       <div class="group">
         <label for="">Surname*</label>
-        <input type="text">
+        <form:input path="surname" />
       </div>
 
       <div class="group">
         <center><button>Confirm</button></center>
       </div>
-    </form>
+    </form:form>
 
   </body>
 </html>
