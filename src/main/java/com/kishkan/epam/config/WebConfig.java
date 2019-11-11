@@ -1,7 +1,10 @@
 package com.kishkan.epam.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
@@ -9,7 +12,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackages = {"com.kishkan.epam.controller", "com.kishkan.epam.service"})
+@Import({SecurityConfig.class})
+@ComponentScan(basePackages = {
+        "com.kishkan.epam.controller",
+        "com.kishkan.epam.service",
+        "com.kishkan.epam.repository"})
 public class WebConfig implements WebMvcConfigurer {
 
     @Override

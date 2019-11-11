@@ -6,9 +6,8 @@ public class Employee {
     private String patronymic;
     private String surname;
     private String login;
-    private int password;
+    private String password;
     private String appointment;
-    private String competenceGrade;
 
     public int getId() {
         return id;
@@ -50,11 +49,11 @@ public class Employee {
         this.login = login;
     }
 
-    public int getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(int password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -64,13 +63,5 @@ public class Employee {
 
     public void setAppointment(String appointment) {
         this.appointment = appointment;
-    }
-
-    public String getCompetenceGrade() {
-        return competenceGrade;
-    }
-
-    public void setCompetenceGrade(String competenceGrade) {
-        this.competenceGrade = competenceGrade;
     }
 }
