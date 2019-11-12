@@ -1,11 +1,11 @@
 package com.kishkan.epam.service.impl;
 
-import com.kishkan.epam.dto.RegisteredUser;
+import com.kishkan.epam.dto.RegisteredUserDto;
 import com.kishkan.epam.entity.Employee;
 import com.kishkan.epam.repository.EmployeeRepository;
-import com.kishkan.epam.repository.impl.EmployeeRepositoryImpl;
 import com.kishkan.epam.service.UserRegistrar;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,14 +14,17 @@ public class UserRegistrarImpl implements UserRegistrar {
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    public void registerUser(RegisteredUser registeredUser) {
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    public void registerUser(RegisteredUserDto registeredUserDto) {
         Employee employee = new Employee.Builder()
-                .name(registeredUser.getName())
-                .patronymic(registeredUser.getPatronymic())
-                .surname(registeredUser.getSurname())
-                .login(registeredUser.getLogin())
-                .password(registeredUser.getPassword())
-                .appointment(registeredUser.getAppointment())
+                .name(registeredUserDto.getName())
+                .patronymic(registeredUserDto.getPatronymic())
+                .surname(registeredUserDto.getSurname())
+                .login(registeredUserDto.getLogin())
+                .password(passwordEncoder.encode(registeredUserDto.getPassword()))
+                .appointment(registeredUserDto.getAppointment())
                 .build();
 
         employeeRepository.addEmployee(employee);

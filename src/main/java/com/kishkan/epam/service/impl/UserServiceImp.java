@@ -1,6 +1,6 @@
 package com.kishkan.epam.service.impl;
 
-import com.kishkan.epam.dto.AuthorizedUser;
+import com.kishkan.epam.dto.AuthorizedUserDto;
 import com.kishkan.epam.entity.Employee;
 import com.kishkan.epam.repository.EmployeeRepository;
 import com.kishkan.epam.service.UserService;
@@ -14,15 +14,15 @@ public class UserServiceImp implements UserService {
     private EmployeeRepository employeeRepository;
 
     @Override
-    public AuthorizedUser getUser(String login) {
+    public AuthorizedUserDto getUser(String login) {
         Employee employeeUser = employeeRepository.getEmployeeByLogin(login);
 
-        AuthorizedUser authorizedUser = new AuthorizedUser();
-        authorizedUser.setLogin(employeeUser.getLogin());
-        authorizedUser.setPassword(employeeUser.getPassword());
-        authorizedUser.setRole(employeeUser.getAppointment());
+        AuthorizedUserDto authorizedUserDto = new AuthorizedUserDto();
+        authorizedUserDto.setLogin(employeeUser.getLogin());
+        authorizedUserDto.setPassword(employeeUser.getPassword());
+        authorizedUserDto.setRole(employeeUser.getAppointment());
 
-        return authorizedUser;
+        return authorizedUserDto;
     }
 
 

@@ -1,7 +1,7 @@
 package com.kishkan.epam.service;
 
-import com.kishkan.epam.dto.AuthorizedUser;
+import com.kishkan.epam.dto.AuthorizedUserDto;
 
 public interface UserService {
-    AuthorizedUser getUser(String login);
+    AuthorizedUserDto getUser(String login);
 }

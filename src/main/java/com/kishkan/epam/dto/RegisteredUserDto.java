@@ -1,6 +1,6 @@
 package com.kishkan.epam.dto;
 
-public class RegisteredUser {
+public class RegisteredUserDto {
     private String name;
     private String patronymic;
     private String surname;

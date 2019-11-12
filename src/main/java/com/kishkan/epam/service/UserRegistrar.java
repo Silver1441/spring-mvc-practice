@@ -1,7 +1,7 @@
 package com.kishkan.epam.service;
 
-import com.kishkan.epam.dto.RegisteredUser;
+import com.kishkan.epam.dto.RegisteredUserDto;
 
 public interface UserRegistrar {
-    void registerUser(RegisteredUser registeredUser);
+    void registerUser(RegisteredUserDto registeredUserDto);
 }
