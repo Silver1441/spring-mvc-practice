@@ -1,6 +1,7 @@
 package com.kishkan.epam.entity;
 
 public class Employee {
+    /**ID is data-based generated*/
     private int id;
     private String name;
     private String patronymic;

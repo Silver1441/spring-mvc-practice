@@ -24,9 +24,8 @@ public class WebConfig implements WebMvcConfigurer {
         registry.jsp("/WEB-INF/pages/", ".jsp");
     }
 
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/WEB-IN/**").addResourceLocations("/WEB-INF/");
-
-    }
+//    @Override
+//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//        registry.addResourceHandler("/WEB-IN/**").addResourceLocations("/WEB-INF/");
+//    }
 }

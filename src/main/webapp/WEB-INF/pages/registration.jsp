@@ -14,31 +14,37 @@
       <div class="group">
         <label for="">Login*</label>
         <form:input path="login" />
+        <form:errors path="login" cssClass="error" />
       </div>
 
       <div class="group">
         <label for="">Password*</label>
         <form:input path="password" />
+        <form:errors path="password" cssClass="error" />
       </div>
 
       <div class="group">
         <label for="">Password Confirmation*</label>
         <form:input path="passwordConfirmation" />
+        <form:errors path="passwordConfirmation" cssClass="error" />
       </div>
 
       <div class="group">
         <label for="">Name*</label>
         <form:input path="name" />
+        <form:errors path="name" cssClass="error" />
       </div>
 
       <div class="group">
         <label for="">Patronymic</label>
         <form:input path="patronymic" />
+        <form:errors path="patronymic" cssClass="error" />
       </div>
 
       <div class="group">
         <label for="">Surname*</label>
         <form:input path="surname" />
+        <form:errors path="surname" cssClass="error" />
       </div>
 
       <div class="group">

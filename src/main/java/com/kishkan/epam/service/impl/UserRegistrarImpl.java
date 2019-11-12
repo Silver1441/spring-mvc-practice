@@ -29,14 +29,4 @@ public class UserRegistrarImpl implements UserRegistrar {
 
         employeeRepository.addEmployee(employee);
     }
-
-//    public static void main(String[] args) {
-//        UserRegistrar userRegistrar = new UserRegistrarImpl();
-//        RegisteredUser registeredUser = new RegisteredUser();
-//        registeredUser.setLogin("TestLog");
-//        registeredUser.setPassword("TestPassword");
-//        registeredUser.setAppointment("TestAppointment");
-//        userRegistrar.registerUser(registeredUser);
-//        System.out.println("log");
-//    }
 }
