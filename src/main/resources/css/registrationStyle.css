@@ -1,0 +1,69 @@
+body {
+  font-family: "FRAMDCN";
+  background-image: url(background.png);
+  color: rgb(126, 117, 117);
+}
+
+form {
+  margin: 0 auto;
+  margin-top: 3%;
+  width: 540px;
+  height: 700px;
+  padding: 20px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.0);
+}
+
+p {
+  font-size: 52px;
+  text-align: center;
+  margin: 0 auto;
+  padding-bottom: 4%;
+  text-transform: uppercase;
+}
+
+.group {
+  margin: 2%;
+  padding: 1%;
+}
+
+label {
+  font-size: 24px;
+  padding-left: 1.5%;
+  text-transform: uppercase;
+}
+
+input {
+  font-size: 21px;
+  color: rgb(66, 57, 57);
+  margin-top: 1%;
+  width: 500px;
+  height: 30px;
+  border: none;
+}
+
+input:focus {
+  font-size: 20px;
+  color: rgb(66, 57, 57);
+  transform: translateX(1.5%);
+  width: 485px;
+  outline: none;
+  border: 3px solid rgb(208, 205, 190);
+}
+
+button {
+  font-family: "FRAMDCN";
+  text-transform: uppercase;
+  font-size: 24px;
+  color: rgb(97, 88, 88);
+  border: none;
+  padding: 6px 12px;
+  margin-top: 2%;
+  background-color: rgb(208, 205, 190);
+}
+
+@font-face {
+font-family: "FRAMDCN";
+src: url("fonts/FRAMDCN.ttf") format("truetype");
+font-style: normal;
+font-weight: normal;
+}

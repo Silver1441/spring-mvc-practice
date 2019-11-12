@@ -5,41 +5,39 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 
 @Configuration
 @ComponentScan("com.kishkan.epa")
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-//    @Autowired
-//    private AuthenticationProviderImpl authenticationProvider;
+    @SuppressWarnings("deprecation")
+    @Bean
+    public static NoOpPasswordEncoder passwordEncoder() {
+        return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
+    }
 
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
-
-//    public void registerGlobalAuthentication(AuthenticationManagerBuilder authentication) throws Exception {
-//        authentication.userDetailsService(userDetailsService);
-//    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/login").anonymous()
-                    .antMatchers("/registration").anonymous()
+                    .antMatchers("/login").permitAll()
+                    .antMatchers("/registration").permitAll()
                     .anyRequest().authenticated()
                 .and().csrf().disable()
                 .formLogin()
                     .loginPage("/login")
                     .loginProcessingUrl("/login/process")
                     .defaultSuccessUrl("/home")
-                    .failureUrl("/login?error=true")
+                    .failureUrl("/login?error")
                     .usernameParameter("login")
                     .passwordParameter("password")
                 .and().logout();
@@ -47,7 +45,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder authentication) throws Exception {
-//        authentication.authenticationProvider(authenticationProvider);
         authentication.userDetailsService(userDetailsService);
     }
 }

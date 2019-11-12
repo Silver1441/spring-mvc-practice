@@ -64,4 +64,47 @@ public class Employee {
     public void setAppointment(String appointment) {
         this.appointment = appointment;
     }
+
+    /**Builder:*/
+    public static class Builder {
+        private Employee employee;
+
+        public Builder() {
+            employee = new Employee();
+        }
+
+        public Builder name(String name) {
+            employee.setName(name);
+            return this;
+        }
+
+        public Builder patronymic(String patronymic) {
+            employee.setPatronymic(patronymic);
+            return this;
+        }
+
+        public Builder surname(String surname) {
+            employee.setSurname(surname);
+            return this;
+        }
+
+        public Builder login(String login) {
+            employee.setLogin(login);
+            return this;
+        }
+
+        public Builder password(String password) {
+            employee.setPassword(password);
+            return this;
+        }
+
+        public Builder appointment(String appointment) {
+            employee.setAppointment(appointment);
+            return this;
+        }
+
+        public Employee build(){
+            return employee;
+        }
+    }
 }

@@ -1,6 +1,6 @@
 package com.kishkan.epam.service;
 
-import com.kishkan.epam.dto.AppUser;
+import com.kishkan.epam.dto.AuthorizedUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -21,10 +21,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-        AppUser appUser = userService.getUser(login);
+        AuthorizedUser authorizedUser = userService.getUser(login);
         Set<GrantedAuthority> roles = new HashSet<>();
-        roles.add(new SimpleGrantedAuthority(appUser.getRole()));
+        roles.add(new SimpleGrantedAuthority(authorizedUser.getRole()));
 
-        return new User(appUser.getLogin(), appUser.getPassword(), roles);
+        return new User(authorizedUser.getLogin(), authorizedUser.getPassword(), roles);
     }
 }

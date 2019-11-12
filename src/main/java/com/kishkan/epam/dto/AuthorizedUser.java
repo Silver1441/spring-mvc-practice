@@ -1,6 +1,6 @@
 package com.kishkan.epam.dto;
 
-public class AppUser {
+public class AuthorizedUser {
     private String login;
     private String password;
     private String role;

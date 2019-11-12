@@ -5,11 +5,11 @@
   <head>
     <meta charset="utf-8">
     <title>Registration</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/registrationStyle.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/WEB-INF/registrationStyle.css">
   </head>
 
   <body>
-    <form:form action="registration" method="post" modelAttribute="employeeForm">
+    <form:form action="registration" method="post" modelAttribute="registrationForm">
       <p title="Registration form">Registration</p>
       <div class="group">
         <label for="">Login*</label>
@@ -23,7 +23,7 @@
 
       <div class="group">
         <label for="">Password Confirmation*</label>
-        <input type="password">
+        <form:input path="passwordConfirmation" />
       </div>
 
       <div class="group">
@@ -39,6 +39,11 @@
       <div class="group">
         <label for="">Surname*</label>
         <form:input path="surname" />
+      </div>
+
+      <div class="group">
+              <label for="">Appointment*</label>
+              <form:select path="appointment" items="${appointmentList}" />
       </div>
 
       <div class="group">
