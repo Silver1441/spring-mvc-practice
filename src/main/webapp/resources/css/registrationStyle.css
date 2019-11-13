@@ -25,6 +25,11 @@ p {
   margin: 2%;
   padding: 1%;
 }
+.select_tab {
+   -webkit-border-radius: 20px;
+   -moz-border-radius: 20px;
+   border-radius: 20px;
+}
 
 label {
   font-size: 24px;

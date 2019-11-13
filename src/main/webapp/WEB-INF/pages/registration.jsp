@@ -54,7 +54,7 @@
 
       <div class="group">
               <label title="Appointment">Appointment*</label>
-              <form:select path="appointment" items="${appointmentList}" />
+              <form:select path="appointment" items="${appointmentList}" cssClass="select_tab" />
       </div>
 
       <div class="group">
