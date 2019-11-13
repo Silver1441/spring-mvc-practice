@@ -4,6 +4,8 @@ import com.kishkan.epam.dto.RegisteredUserDto;
 import com.kishkan.epam.repository.AppointmentRepository;
 import com.kishkan.epam.repository.EmployeeRepository;
 import com.kishkan.epam.service.UserRegistrar;
+import com.kishkan.epam.validator.LoginAvailabilityInputRestValidator;
+import com.kishkan.epam.validator.PasswordInputRestValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -25,12 +27,14 @@ public class RegistrationController {
     private AppointmentRepository appointmentRepository;
 
     @Autowired
-    private EmployeeRepository employeeRepository;
-
-    @Autowired
     @Qualifier("registeredUserValidator")
     private Validator registeredUserValidator;
 
+    @Autowired
+    PasswordInputRestValidator passwordInputRestValidator;
+
+    @Autowired
+    LoginAvailabilityInputRestValidator loginAvailabilityInputRestValidator;
 
     @GetMapping
     public String viewRegistration(ModelMap model) {
@@ -56,19 +60,17 @@ public class RegistrationController {
     @ResponseBody
     public ModelMap checkLogin(@RequestParam String text) {
         ModelMap model = new ModelMap();
-        model.addAttribute("input", isLoginTaken(text));
+        model.addAttribute("input", loginAvailabilityInputRestValidator.isLoginTaken(text));
         return model;
     }
 
-    private String isLoginTaken(String login) {
-        if (employeeRepository.getEmployeeByLogin(login) != null) {
-            return "taken";
-        }
-        else if (login.equals("")) {
-            return "empty";
-        }
-        else {
-            return "free";
-        }
+    @GetMapping(value = "/checkPassword", produces = "application/json")
+    @ResponseBody
+    public ModelMap checkPassword(@RequestParam String text) {
+        ModelMap model = new ModelMap();
+        model.addAttribute("input", passwordInputRestValidator.validatePassword(text));
+        return model;
     }
+
+
 }

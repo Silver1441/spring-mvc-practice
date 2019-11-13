@@ -7,7 +7,7 @@ import org.springframework.validation.Validator;
 
 @Service
 public class RegisteredUserValidator implements Validator {
-    private static final String REG_PASSWORD_CONFIRMATION_ERROR = "password confirmation didn't match";
+    private static final String REG_PASSWORD_CONFIRMATION_ERROR = "password confirmation doesn't match";
 
     @Override
     public boolean supports(Class<?> aClass) {

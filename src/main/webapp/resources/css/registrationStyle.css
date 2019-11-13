@@ -26,9 +26,35 @@ p {
   padding: 1%;
 }
 .select_tab {
-   -webkit-border-radius: 20px;
-   -moz-border-radius: 20px;
-   border-radius: 20px;
+  color: rgb(66, 57, 57);
+  margin-left: 9%;
+  height: 30px;
+  border: none;
+  outline:none;
+  font-size: 21px;
+  color: rgb(126, 117, 117);
+}
+
+.select_tab select {
+  outline:none;
+}
+
+.select_tab:focus {
+  border: 3px solid rgb(208, 205, 190);
+}
+
+.select_options {
+  font-size: 16px;
+}
+
+.error {
+  color: rgb(120, 7, 7);
+  margin-left: 3%;
+}
+
+.appropriate {
+  color: rgb(0, 110, 20);
+  margin-left: 3%;
 }
 
 label {
@@ -38,7 +64,7 @@ label {
 }
 
 input {
-  font-size: 21px;
+font-size: 21px;
   color: rgb(66, 57, 57);
   margin-top: 1%;
   width: 500px;

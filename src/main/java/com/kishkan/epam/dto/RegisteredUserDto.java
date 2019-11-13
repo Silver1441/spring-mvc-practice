@@ -8,7 +8,7 @@ import javax.validation.constraints.Size;
 public class RegisteredUserDto {
     private static final String REG_NAME_ERROR = "name must be defined";
     private static final String REG_SURNAME_ERROR = "surname must be defined";
-    private static final String REG_LOGIN_ERROR = "login's length must be between 4 and 16 characters";
+    private static final String REG_LOGIN_ERROR = "fill the login field";
     private static final String REG_PASSWORD_ERROR = "password's length must be between 6 and 30 characters";
     private static final String REG_APPOINTMENT_ERROR = "appointment must be selected";
 
@@ -20,7 +20,7 @@ public class RegisteredUserDto {
     @NotBlank(message = REG_SURNAME_ERROR)
     private String surname;
 
-    @Size(min = 4, max = 16, message = REG_LOGIN_ERROR)
+    @NotBlank(message = REG_LOGIN_ERROR)
     private String login;
 
     @Size(min = 6, max = 30, message = REG_PASSWORD_ERROR)

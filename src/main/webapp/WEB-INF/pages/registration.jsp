@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/check-login-availability.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/check-password.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/registrationStyle.css">
 
     <title>Registration</title>
@@ -24,8 +25,9 @@
 
       <div class="group">
         <label title="Password">Password*</label>
-        <form:input path="password" type="password" title="Password" />
+        <form:input path="password" id="check_password" type="password" title="Password" />
         <form:errors path="password" cssClass="error" />
+        <div class="password_error_message"> </div>
       </div>
 
       <div class="group">
@@ -54,7 +56,9 @@
 
       <div class="group">
               <label title="Appointment">Appointment*</label>
-              <form:select path="appointment" items="${appointmentList}" cssClass="select_tab" />
+              <form:select path="appointment" cssClass="select_tab">
+                <form:options items="${appointmentList}" cssClass="select_options" />
+              </form:select>
       </div>
 
       <div class="group">
