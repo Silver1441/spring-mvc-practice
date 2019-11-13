@@ -1,6 +1,7 @@
 package com.kishkan.epam.dto;
 
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -8,26 +9,26 @@ public class RegisteredUserDto {
     private static final String REG_NAME_ERROR = "name must be defined";
     private static final String REG_SURNAME_ERROR = "surname must be defined";
     private static final String REG_LOGIN_ERROR = "login's length must be between 4 and 16 characters";
-    private static final String REG_PASSWORD_ERROR = "password's length must be between 4 and 16 characters";
+    private static final String REG_PASSWORD_ERROR = "password's length must be between 6 and 30 characters";
     private static final String REG_APPOINTMENT_ERROR = "appointment must be selected";
 
-    @NotNull(message = REG_NAME_ERROR)
+    @NotBlank(message = REG_NAME_ERROR)
     private String name;
 
     private String patronymic;
 
-    @NotNull(message = REG_SURNAME_ERROR)
+    @NotBlank(message = REG_SURNAME_ERROR)
     private String surname;
 
     @Size(min = 4, max = 16, message = REG_LOGIN_ERROR)
     private String login;
 
-    @Size(min = 8, max = 30, message = REG_PASSWORD_ERROR)
+    @Size(min = 6, max = 30, message = REG_PASSWORD_ERROR)
     private String password;
 
     private String passwordConfirmation;
 
-    @NotNull(message = REG_APPOINTMENT_ERROR)
+    @NotBlank(message = REG_APPOINTMENT_ERROR)
     private String appointment;
 
     public String getName() {

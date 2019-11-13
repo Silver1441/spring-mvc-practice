@@ -1,6 +1,6 @@
 body {
   font-family: "FRAMDCN";
-  background-image: url(background.png);
+  background-image: url(../images/background.png);
   color: rgb(126, 117, 117);
 }
 
@@ -63,7 +63,7 @@ button {
 
 @font-face {
 font-family: "FRAMDCN";
-src: url("fonts/FRAMDCN.ttf") format("truetype");
+src: url(../fonts/FRAMDCN.TTF) format("truetype");
 font-style: normal;
 font-weight: normal;
 }

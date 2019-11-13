@@ -1,54 +1,59 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" language="java" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/check-login-availability.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/registrationStyle.css">
+
     <title>Registration</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/WEB-INF/registrationStyle.css">
   </head>
 
   <body>
     <form:form action="registration" method="post" modelAttribute="registrationForm">
       <p title="Registration form">Registration</p>
       <div class="group">
-        <label for="">Login*</label>
-        <form:input path="login" />
+        <label title="Login">Login*</label>
+        <form:input path="login" id="check_login" title="Login" />
         <form:errors path="login" cssClass="error" />
+        <div class="login_taken_error_message"> </div>
       </div>
 
       <div class="group">
-        <label for="">Password*</label>
-        <form:input path="password" />
+        <label title="Password">Password*</label>
+        <form:input path="password" type="password" title="Password" />
         <form:errors path="password" cssClass="error" />
       </div>
 
       <div class="group">
-        <label for="">Password Confirmation*</label>
-        <form:input path="passwordConfirmation" />
+        <label title="Password">Password Confirmation*</label>
+        <form:input path="passwordConfirmation" type="password" title="Password" />
         <form:errors path="passwordConfirmation" cssClass="error" />
       </div>
 
       <div class="group">
-        <label for="">Name*</label>
-        <form:input path="name" />
+        <label title="Name">Name*</label>
+        <form:input path="name" title="Name" />
         <form:errors path="name" cssClass="error" />
       </div>
 
       <div class="group">
-        <label for="">Patronymic</label>
-        <form:input path="patronymic" />
+        <label title="Patronymic">Patronymic</label>
+        <form:input path="patronymic" title="Patronymic" />
         <form:errors path="patronymic" cssClass="error" />
       </div>
 
       <div class="group">
-        <label for="">Surname*</label>
-        <form:input path="surname" />
+        <label title="Surname">Surname*</label>
+        <form:input path="surname" title="Surname" />
         <form:errors path="surname" cssClass="error" />
       </div>
 
       <div class="group">
-              <label for="">Appointment*</label>
+              <label title="Appointment">Appointment*</label>
               <form:select path="appointment" items="${appointmentList}" />
       </div>
 

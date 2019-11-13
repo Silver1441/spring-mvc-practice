@@ -19,7 +19,7 @@
             </tr>
             <tr>
                 <td>User Name:</td>
-                <td>${employeeForm.login}</td>
+                <td>${registrationForm.login}</td>
             </tr>
         </table>
     </div>
