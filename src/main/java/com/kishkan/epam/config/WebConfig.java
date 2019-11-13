@@ -16,7 +16,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @ComponentScan(basePackages = {
         "com.kishkan.epam.controller",
         "com.kishkan.epam.service",
-        "com.kishkan.epam.repository"})
+        "com.kishkan.epam.repository",
+        "com.kishkan.epam.validator"})
 public class WebConfig implements WebMvcConfigurer {
 
     @Override

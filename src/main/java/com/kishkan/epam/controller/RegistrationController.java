@@ -4,9 +4,12 @@ import com.kishkan.epam.dto.RegisteredUserDto;
 import com.kishkan.epam.repository.AppointmentRepository;
 import com.kishkan.epam.service.UserRegistrar;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -20,6 +23,15 @@ public class RegistrationController {
     @Autowired
     private AppointmentRepository appointmentRepository;
 
+    @Autowired
+    @Qualifier("registeredUserValidator")
+    private Validator registeredUserValidator;
+
+//    @InitBinder
+//    protected void initBinder(WebDataBinder binder) {
+//        binder.setValidator(registeredUserValidator);
+//    }
+
     @GetMapping("/registration")
     public String viewRegistration(ModelMap model) {
         model.addAttribute("registrationForm", new RegisteredUserDto());
@@ -32,6 +44,7 @@ public class RegistrationController {
                                       BindingResult bindingResult, ModelMap model) {
 
         model.addAttribute("appointmentList", appointmentRepository.getAppointments());
+        registeredUserValidator.validate(registeredUserDto, bindingResult);
         if (bindingResult.hasErrors()) {
             return "registration";
         }
