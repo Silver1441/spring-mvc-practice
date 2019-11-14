@@ -2,7 +2,6 @@ package com.kishkan.epam.controller;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -12,13 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class RegistrationSuccessController {
 
     @GetMapping
-    public String viewRegistrationSuccess(Authentication authentication, ModelMap model) {
-        model.addAttribute("user", authentication.getName());
+    public String viewRegistrationSuccess() {
         return "registrationSuccess";
     }
 
     @GetMapping("/proceed")
-    public String viewToLogin() {
-        return "redirect:/login";
+    public String viewToLogin(Authentication authentication) {
+        if (authentication != null) {
+            return "redirect:/home";
+        } else {
+            return "redirect:/login";
+        }
     }
 }

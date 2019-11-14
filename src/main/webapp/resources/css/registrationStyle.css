@@ -25,6 +25,12 @@ p {
   margin: 2%;
   padding: 1%;
 }
+
+.info_text {
+  font-size: 14px;
+  color: rgb(66, 57, 57);
+}
+
 .select_tab {
   color: rgb(66, 57, 57);
   margin-left: 9%;

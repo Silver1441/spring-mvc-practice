@@ -10,17 +10,17 @@
         <title>Registration Success</title>
     </head>
     <body>
-        <form:form action="proceed" method="get" >
-            <p title="Registration success">
+        <form:form action="registrationSuccess/proceed" method="get" >
+            <p title="Registration completed successfully!">
                 Registration success!
             </p>
 
             <div class="info_text">
-                <h1>Account have been registered!</h1>
+                <center><h1>Account have been registered!</h1></center>
             </div>
 
             <div class="group">
-                <center><button>log in</button></center>
+                <center><button>proceed</button></center>
             </div>
         </form:form>
     </body>

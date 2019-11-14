@@ -43,11 +43,10 @@ public class RegistrationController {
         return "registration";
     }
 
-    @PostMapping
+    @PostMapping("/proceed")
     public String processRegistration(@Valid @ModelAttribute("registrationForm") RegisteredUserDto registeredUserDto,
-                                      BindingResult bindingResult, ModelMap model) {
+                                      BindingResult bindingResult) {
 
-        model.addAttribute("appointmentList", appointmentRepository.getAppointments());
         registeredUserValidator.validate(registeredUserDto, bindingResult);
         if (bindingResult.hasErrors()) {
             return "registration";

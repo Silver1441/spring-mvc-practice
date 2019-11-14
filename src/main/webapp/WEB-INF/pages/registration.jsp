@@ -14,7 +14,7 @@
   </head>
 
   <body>
-    <form:form action="registration" method="post" modelAttribute="registrationForm">
+    <form:form action="registration/proceed" method="post" modelAttribute="registrationForm">
       <p title="Registration form">
         Registration
       </p>
