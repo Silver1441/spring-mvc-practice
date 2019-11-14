@@ -15,7 +15,10 @@
 
   <body>
     <form:form action="registration" method="post" modelAttribute="registrationForm">
-      <p title="Registration form">Registration</p>
+      <p title="Registration form">
+        Registration
+      </p>
+
       <div class="group">
         <label title="Login">Login*</label>
         <form:input path="login" id="check_login" title="Login" />
