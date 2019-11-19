@@ -1,5 +1,12 @@
-$(document).ready(function() {
-    $("#check_login").keyup(checkAvailability);
+var globalTimeout = null;
+                  $(document).ready(function() {
+                      $("#check_login").keyup(function(){
+                      if(globalTimeout != null) {
+                          clearTimeout(globalTimeout)
+                      };
+
+                      globalTimeout = setTimeout(checkAvailability, 1000);
+                      })
 })
 
 function checkAvailability() {

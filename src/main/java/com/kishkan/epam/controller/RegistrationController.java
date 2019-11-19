@@ -2,10 +2,8 @@ package com.kishkan.epam.controller;
 
 import com.kishkan.epam.dto.RegisteredUserDto;
 import com.kishkan.epam.repository.AppointmentRepository;
-import com.kishkan.epam.repository.EmployeeRepository;
 import com.kishkan.epam.service.UserRegistrar;
 import com.kishkan.epam.validator.LoginAvailabilityInputRestValidator;
-import com.kishkan.epam.validator.PasswordInputRestValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -13,6 +11,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -31,25 +30,30 @@ public class RegistrationController {
     private Validator registeredUserValidator;
 
     @Autowired
-    PasswordInputRestValidator passwordInputRestValidator;
-
-    @Autowired
-    LoginAvailabilityInputRestValidator loginAvailabilityInputRestValidator;
+    private LoginAvailabilityInputRestValidator loginAvailabilityInputRestValidator;
 
     @GetMapping
     public String viewRegistration(ModelMap model) {
-        model.addAttribute("registrationForm", new RegisteredUserDto());
+        if(!model.containsAttribute("registrationForm")){
+            model.addAttribute("registrationForm", new RegisteredUserDto());
+        }
+
         model.addAttribute("appointmentList", appointmentRepository.getAppointments());
+
         return "registration";
     }
 
     @PostMapping("/proceed")
     public String processRegistration(@Valid @ModelAttribute("registrationForm") RegisteredUserDto registeredUserDto,
-                                      BindingResult bindingResult) {
+                                      BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
         registeredUserValidator.validate(registeredUserDto, bindingResult);
         if (bindingResult.hasErrors()) {
-            return "registration";
+            redirectAttributes.addFlashAttribute
+                    ("org.springframework.validation.BindingResult.registrationForm", bindingResult);
+            redirectAttributes.addFlashAttribute
+                    ("registrationForm", registeredUserDto);
+            return "redirect:/registration";
         }
         userRegistrar.registerUser(registeredUserDto);
         return "redirect:/registrationSuccess";
@@ -62,14 +66,5 @@ public class RegistrationController {
         model.addAttribute("input", loginAvailabilityInputRestValidator.isLoginTaken(text));
         return model;
     }
-
-    @GetMapping(value = "/checkPassword", produces = "application/json")
-    @ResponseBody
-    public ModelMap checkPassword(@RequestParam String text) {
-        ModelMap model = new ModelMap();
-        model.addAttribute("input", passwordInputRestValidator.validatePassword(text));
-        return model;
-    }
-
 
 }
