@@ -4,6 +4,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/registrationStyle.css">
 
     <title>Sign up</title>
   </head>
@@ -24,6 +25,12 @@
 
       <div class="group">
         <center><button>Confirm</button></center>
+      </div>
+    </form>
+
+    <form action="registration" method="get">
+      <div class="group">
+        <center><button>registration</button></center>
       </div>
     </form>
 

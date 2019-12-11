@@ -3,7 +3,6 @@ package com.kishkan.epam.config;
 import com.kishkan.epam.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -24,11 +23,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/login").permitAll()
-                    .antMatchers("/login/checkLogin").permitAll()
+                    .antMatchers("/login").anonymous()
                     .antMatchers("/registration").permitAll()
-                    .anyRequest().permitAll()
-                .and().csrf().disable()
+                    .antMatchers("/registration/**").permitAll()
+                    .antMatchers("/registrationSuccess").permitAll()
+
+                    .antMatchers("/resources/css/**").permitAll()
+                    .antMatchers("/resources/js/**").permitAll()
+                    .antMatchers("/resources/images/**").permitAll()
+                    .antMatchers("/resources/fonts/**").permitAll()
+
+                    .anyRequest().authenticated()
+
+                .and()
+                    .csrf().disable()
+
                 .formLogin()
                     .loginPage("/login")
                     .loginProcessingUrl("/login/process")
@@ -36,7 +45,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .failureUrl("/login?error")
                     .usernameParameter("login")
                     .passwordParameter("password")
-                .and().logout();
+
+                .and()
+                    .logout();
     }
 
     @Override

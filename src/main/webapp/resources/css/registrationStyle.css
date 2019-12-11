@@ -1,6 +1,7 @@
 body {
   font-family: "FRAMDCN";
   background-image: url(../images/background.png);
+  background-size: cover;
   color: rgb(126, 117, 117);
 }
 
