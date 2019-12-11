@@ -4,12 +4,14 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/HandleBack.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/registrationStyle.css">
 
     <title>Sign up</title>
   </head>
 
-  <body>
+  <body onbeforeunload="HandleBackFunctionality()">
     <form action="login/process" method="post">
       <p title="Login form">Sign up</p>
       <div class="group">
@@ -20,6 +22,7 @@
       <div class="group">
         <label for="">Password</label>
         <input name="password" type="password" />
+        <div class="error">${error_login_placeholder}</div>
       </div>
 
 
@@ -29,8 +32,8 @@
     </form>
 
     <form action="registration" method="get">
-      <div class="group">
-        <center><button>registration</button></center>
+      <div>
+        <center><button class="reg_button">registration</button></center>
       </div>
     </form>
 

@@ -1,6 +1,6 @@
 body {
   font-family: "FRAMDCN";
-  background-image: url(../images/background.png);
+  background: url(../images/background.png) no-repeat center top fixed;
   background-size: cover;
   color: rgb(126, 117, 117);
 }
@@ -8,8 +8,7 @@ body {
 form {
   margin: 0 auto;
   margin-top: 3%;
-  width: 540px;
-  height: 700px;
+  width: 440px;
   padding: 20px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.0);
 }
@@ -56,12 +55,19 @@ p {
 
 .error {
   color: rgb(120, 7, 7);
+  margin-top: 1%;
   margin-left: 3%;
 }
 
 .appropriate {
   color: rgb(0, 110, 20);
+  margin-top: 1%;
   margin-left: 3%;
+}
+
+.reg_button {
+  font-size: 20px;
+  background-color: rgb(0, 0, 0, 0);
 }
 
 label {
@@ -74,7 +80,7 @@ input {
 font-size: 21px;
   color: rgb(66, 57, 57);
   margin-top: 1%;
-  width: 500px;
+  width: 400px;
   height: 30px;
   border: none;
 }
@@ -83,7 +89,7 @@ input:focus {
   font-size: 20px;
   color: rgb(66, 57, 57);
   transform: translateX(1.5%);
-  width: 485px;
+  width: 387px;
   outline: none;
   border: 3px solid rgb(208, 205, 190);
 }
